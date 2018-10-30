@@ -1,6 +1,9 @@
 # Google-2FA
 How to implement Two Factor Authenticator in your Linux Server
 
+- [X] Ale DC
+- [X] CentOS
+
 ## This document explains how to implement 2FA on a Centos server, in my case is in my Docker Server.
 
 ### First of all, the google-authenticator package must be installed.
