@@ -24,7 +24,7 @@ google-authenticator
 https://www.google.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/root@mysecretdomain.com.%3Fsecret%3DGZN7YASDFWERTGMWRFWBBSI%26issuer%mydomain.com
 ```
 
-![alt text](https://bitbucket.org/aledc/unxs-aledc/downloads/google_authenticator.root.png "QR for root user")
+![QR 2FA](https://github.com/aledc7/Google-2FA/blob/master/2fa-demo.png "QR for root user")
 
 
 ```
@@ -132,7 +132,7 @@ Warning: pasting the following URL into your browser exposes the OTP secret to G
 https://www.google.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/mydomain@domain.com%3Fsecret%3DRLBLABLABLAKFURHDSDFMBM%26issuer%3Mydomain.com
 ```
 
-![alt text](https://bitbucket.org/aledc/unxs-aledc/downloads/google_authehticator.unxs2.png "QR for unxs2 user")
+![QR 2FA](https://github.com/aledc7/Google-2FA/blob/master/2fa-demo.png "QR for unxs2 user")
 
 ```
 Your new secret key is: LDFGDBFLJRIOJTGADFG;KJFG
