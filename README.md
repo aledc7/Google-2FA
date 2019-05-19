@@ -1,4 +1,7 @@
 # Google-2FA
+
+[<img src="https://github.com/aledc7/PHP-Certification/blob/master/aledc-logo.png?raw=true">](https://aledc.com)
+
 How to implement Two Factor Authenticator in your Linux Server
 
 - [X] Ale DC
@@ -23,14 +26,14 @@ google-authenticator
 
 
 ### then, we will get in response the secret code OTP with its corresponding QR code. (for root user)
-```
+```html
 https://www.google.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/root@mysecretdomain.com.%3Fsecret%3DGZN7YASDFWERTGMWRFWBBSI%26issuer%mydomain.com
 ```
 
 ![QR 2FA](https://github.com/aledc7/Google-2FA/blob/master/2fa-demo.png "QR for root user")
 
 
-```
+```html
 Your new secret key is: ASDFQWERZR3DOMGMUBCPDBSI
 Your verification code is 542786
 Your emergency scratch codes are:
@@ -47,14 +50,14 @@ Your emergency scratch codes are:
 Do you want me to update your "/root/.google_authenticator" file? (y/n) y
 ```
 ### Then ask if you want to disable multiple uses of the same token, for more security, disable it.
-```
+```html
 Do you want to disallow multiple uses of the same authentication
 token? This restricts you to one login about every 30s, but it increases
 your chances to notice or even prevent man-in-the-middle attacks (y/n) y
 ```
 
 ### This option is to increase the validity time of the code, it is recommended to answer NO for greater security.
-```
+```html
 By default, a new token is generated every 30 seconds by the mobile app.
 In order to compensate for possible time-skew between the client and the server,
 we allow an extra token before and after the current time. This allows for a
@@ -68,7 +71,7 @@ Do you want to do so? (y/n) n
 ```
 
 ### Limit the time between login attempts
-```
+```html
 If the computer that you are logging into isn't hardened against brute-force
 login attempts, you can enable rate-limiting for the authentication module.
 By default, this limits attackers to no more than 3 login attempts every 30s.
