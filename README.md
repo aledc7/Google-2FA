@@ -13,14 +13,14 @@ How to implement Two Factor Authenticator in your Linux Server
 ## This document explains how to implement 2FA on a Centos server, in my case is in my Docker Server.
 
 ### First of all, the google-authenticator package must be installed.
-```
+```php
 yum install google-authenticator
 ```
 
 
 
 ### Once installed, I run the program.
-```
+```php
 google-authenticator
 ```
 
@@ -29,14 +29,14 @@ google-authenticator
 
 
 ### then, we will get in response the secret code OTP with its corresponding QR code. (for root user)
-```html
+```php
 https://www.google.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/root@mysecretdomain.com.%3Fsecret%3DGZN7YASDFWERTGMWRFWBBSI%26issuer%mydomain.com
 ```
 
 ![QR 2FA](https://github.com/aledc7/Google-2FA/blob/master/2fa-demo.png "QR for root user")
 
 
-```html
+```php
 Your new secret key is: ASDFQWERZR3DOMGMUBCPDBSI
 Your verification code is 542786
 Your emergency scratch codes are:
@@ -49,18 +49,18 @@ Your emergency scratch codes are:
 ```
 
 ### Then ask if you want to generate the .google_autenticator file, you must answer yes.
-```
+```php
 Do you want me to update your "/root/.google_authenticator" file? (y/n) y
 ```
 ### Then ask if you want to disable multiple uses of the same token, for more security, disable it.
-```html
+```php
 Do you want to disallow multiple uses of the same authentication
 token? This restricts you to one login about every 30s, but it increases
 your chances to notice or even prevent man-in-the-middle attacks (y/n) y
 ```
 
 ### This option is to increase the validity time of the code, it is recommended to answer NO for greater security.
-```html
+```php
 By default, a new token is generated every 30 seconds by the mobile app.
 In order to compensate for possible time-skew between the client and the server,
 we allow an extra token before and after the current time. This allows for a
@@ -74,7 +74,7 @@ Do you want to do so? (y/n) n
 ```
 
 ### Limit the time between login attempts
-```html
+```php
 If the computer that you are logging into isn't hardened against brute-force
 login attempts, you can enable rate-limiting for the authentication module.
 By default, this limits attackers to no more than 3 login attempts every 30s.
@@ -89,37 +89,37 @@ Do you want to enable rate-limiting? (y/n) y
 ### When configuring ssh always work with two simultaneous open terminals, in case something fails.
 
 ### Once we have at least two ssh terminals connected to the server, we edit the sshd files
-```
+```php
  nano /etc/pam.d/sshd
 ```
 
 ### We must allow users who do not have a token to continue accessing only with password ssh.
 ### this is achieved by adding this line to the configuration file. "nullok".
 
-```
+```php
 auth required pam_google_authenticator.so nullok
 ```
 
 ### It is also necessary to comment this line:
-```
+```php
 # auth       substack     password-auth
 ```
 
 
 ### Then we have to enable 2FA in the SSHD config file.
-```
+```php
 nano /etc/ssh/sshd_config
 ```
 
 ### enable Response Authenticator
-```
+```php
 ChallengeResponseAuthentication yes
 #ChallengeResponseAuthentication no
 ```
 
 
 ### It is also necessary to add this line.
-```
+```php
 AuthenticationMethods publickey,password publickey,keyboard-interactive
 ```
 
@@ -131,19 +131,19 @@ __NOTE__
 if we don't want to generate another code, we could copy the same code of root user.
 
 For this we must copy the .google_Authenticator file in the /home/user folder and then change the owner file whit this command:
-```
+```php
 chown new_owner .google_authenticator   (replace new_owner by the user you want to be the new owner)
 
 ```
 
-```
+```php
 Warning: pasting the following URL into your browser exposes the OTP secret to Google:
 https://www.google.com/chart?chs=200x200&chld=M|0&cht=qr&chl=otpauth://totp/mydomain@domain.com%3Fsecret%3DRLBLABLABLAKFURHDSDFMBM%26issuer%3Mydomain.com
 ```
 
 ![QR 2FA](https://github.com/aledc7/Google-2FA/blob/master/2fa-demo.png "QR for unxs2 user")
 
-```
+```php
 Your new secret key is: LDFGDBFLJRIOJTGADFG;KJFG
 Your verification code is 345346
 Your emergency scratch codes are:
@@ -157,7 +157,7 @@ Your emergency scratch codes are:
 
 ### Once this is done it is only necessary to restart the services to check the operation (Make sure you have two terminals connected and active).
 
-```
+```php
 systemctl restart sshd.service
 ```
 
